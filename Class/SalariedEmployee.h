@@ -1,27 +1,26 @@
 #ifndef _SALARIED_EMPLOYEE_H_
 #define _SALARIED_EMPLOYEE_H_
+#include "Employee.hpp"
 #include <iostream>
 #include <string>
 #include <string_view>
 #include <format>
 
-class SalariedEmployee
+class SalariedEmployee final : public Employee
 {
 public:
 	SalariedEmployee(std::string_view name, double salary);
 
-	std::string GetName() const;
-	void SetName(std::string_view name);
+	
 
 	double GetSalary() const;
 	void SetSalary(double salary);
 
-	double Earnings() const;
-	std::string toString() const;
+	double Earnings() const override;
+	std::string toString() const override;
 
 
 private:
-	std::string name{};
 	double salary{ 0.0 };
 };
 

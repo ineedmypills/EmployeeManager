@@ -1,25 +1,8 @@
 #include "SalariedEmployee.h"
 
-SalariedEmployee::SalariedEmployee(std::string_view name, double salary)
+SalariedEmployee::SalariedEmployee(std::string_view name, double salary) : Employee{name}
 {
-	if (name.size() < 3) {
-		throw std::invalid_argument("\nХто? Это как?..\n");
-	}
-	this->name = name;
-	this->salary = salary;
-}
-
-std::string SalariedEmployee::GetName() const
-{
-	return name;
-}
-
-void SalariedEmployee::SetName(std::string_view name)
-{
-	if (name.size() < 3) {
-		throw std::invalid_argument("\nХто? Это как?..\n");
-	}
-	this->name = name;
+	SetSalary(salary);
 }
 
 double SalariedEmployee::GetSalary() const
@@ -42,5 +25,5 @@ double SalariedEmployee::Earnings() const
 
 std::string SalariedEmployee::toString() const
 {
-	return std::format("Имя: {}\nОклад: {}\n", this->name, this->salary);
+	return std::format("{}\nЗарплата: {}\n", toString(), GetSalary());
 }
